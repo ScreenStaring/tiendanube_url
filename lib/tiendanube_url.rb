@@ -35,6 +35,13 @@ module TiendanubeURL
       end
     end
 
+    class Theme < String
+      def initialize(host, id, qs = nil)
+        super host + "/themes/settings/installations/" << id.to_s
+        self << "?" << qs if qs
+      end
+    end
+
     def initialize(shop, domain)
       raise ArgumentError, "shop required" if empty?(shop)
       raise ArgumentError, "domain required" if empty?(domain)
@@ -76,6 +83,11 @@ module TiendanubeURL
       url = host + "/themes"
       url << "?" << q(query) if query
       url
+    end
+
+    def theme(id, query = nil)
+      id_required!(id)
+      Theme.new(host, id, q(query))
     end
 
     protected

@@ -69,6 +69,19 @@ RSpec.shared_examples "an admin" do |base_url|
       expect(@admin.themes).to eq test_url("themes")
     end
   end
+
+  describe "#theme" do
+    it "builds a URL to the given theme" do
+      expect(@admin.theme(1)).to eq test_url("themes/settings/installations/1")
+      expect(@admin.theme(1, :foo => "a b", :bar => 99)).to eq test_url("themes/settings/installations/1?foo=a+b&bar=99")
+    end
+
+    it "requires an id" do
+      [nil, "", " "].each do |id|
+        expect { @admin.theme(id) }.to raise_error(ArgumentError, "id required")
+      end
+    end
+  end
 end
 
 RSpec.shared_examples "an admin URL" do |base_url|

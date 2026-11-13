@@ -31,6 +31,9 @@ url.product(456)
 
 # https://shopname.mitiendanube.com/admin/themes
 url.themes
+
+# https://shopname.mitiendanube.com/admin/themes/settings/installations/123
+url.theme(123)
 ```
 
 ```ruby
@@ -54,6 +57,9 @@ url.product(456)
 
 # https://shopname.lojavirtualnuvem.com.br/admin/themes
 url.themes
+
+# https://shopname.lojavirtualnuvem.com.br/admin/themes/settings/installations/123
+url.theme(123)
 ```
 
 ### Custom Linker
